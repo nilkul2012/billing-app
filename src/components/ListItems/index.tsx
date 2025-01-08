@@ -1,14 +1,25 @@
+import { updateRoute } from "@/redux/reducers/routes/routerSlice"
+import { useAppDispatch } from "@/redux/store/hooks"
 import { ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material"
 
 interface ListItemProps {
     key: number
-    value: string
-    drawerStatus: boolean
-    icon: React.ReactNode
+    menuDetails: {
+        segment?: string
+        title: string
+        key: string
+        icon: React.ReactNode
+    }
+    drawerStatus: boolean,
 }
-const ListItems: React.FC<ListItemProps> = ({ key, value, drawerStatus, icon }) => {
+const ListItems: React.FC<ListItemProps> = ({ menuDetails, drawerStatus }) => {
+    const { title, key, icon } = menuDetails
+    const dispatch = useAppDispatch()
+    const updateNav = (val: string) => {
+        dispatch(updateRoute(val))
+    }
     return (
-        <ListItem key={key} disablePadding sx={{ display: 'block' }}>
+        <ListItem onClick={() => updateNav(key)} key={key} disablePadding sx={{ display: 'block' }}>
             <ListItemButton
                 sx={[
                     {
@@ -42,7 +53,7 @@ const ListItems: React.FC<ListItemProps> = ({ key, value, drawerStatus, icon }) 
                     {icon}
                 </ListItemIcon>
                 <ListItemText
-                    primary={value}
+                    primary={title}
                     sx={[
                         drawerStatus
                             ? {

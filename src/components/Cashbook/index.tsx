@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid2';
 
-const Dashboard:React.FC = () => {
+const Cashbook:React.FC = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
@@ -14,4 +14,4 @@ const Dashboard:React.FC = () => {
       );
 }
 
-export default Dashboard
+export default Cashbook
