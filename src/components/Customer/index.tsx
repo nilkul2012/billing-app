@@ -4,14 +4,19 @@ import Grid from "@mui/material/Grid2";
 import Paper from "@mui/material/Paper";
 // import TextField from "@mui/material/TextField";
 import "./Customer.style.css";
-import InputBox from "../InputBox/index";
+import InputBox from "../Common/InputBox/index";
+// import { KeyObjectType } from "node:crypto";
 
+interface customerDetailsType {
+  name?: string
+  contact?: string
+}
 const Customer: React.FC = () => {
-  const [customerDetails, setCustomerDetails] = React.useState({});
+  const [customerDetails, setCustomerDetails] = React.useState<customerDetailsType>({});
 
-  const onInputChange = (val: string, objKey: string) => {
+  const onInputChange = (val: string, objKey?: string) => {
     const updatedDetails = {...customerDetails}
-    updatedDetails[objKey] = val
+    updatedDetails[objKey as keyof customerDetailsType] = val
     setCustomerDetails(updatedDetails)
   }
     
@@ -28,10 +33,10 @@ const Customer: React.FC = () => {
               objKey={"name"}
             />
             <InputBox
-              label={"Name"}
-              value={customerDetails?.name || ""}
+              label={"Contact"}
+              value={customerDetails?.contact || ""}
               onChange={onInputChange}
-              objKey={"na"}
+              objKey={"contact"}
             />
           </Paper>
         </Grid>

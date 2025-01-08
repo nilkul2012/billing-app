@@ -21,8 +21,11 @@ const InputBox: React.FC<InputBoxProps> = ({
   onChange,
   objKey
 }) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onInputChange = (e:any) => onChange(e.target.value, objKey)
+
+  const onInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    onChange(e.target.value, objKey)
+  }
+
   return (
     <TextField
       required={isRequired}
@@ -35,11 +38,5 @@ const InputBox: React.FC<InputBoxProps> = ({
     />
   );
 };
-
-// <{title:string}> = ({req,id,label,defaultValue}) => {
-//   return (
-//     <TextField {req} id={id} label={label} defaultValue={defaultValue} />
-//   );
-// };
 
 export default InputBox;
