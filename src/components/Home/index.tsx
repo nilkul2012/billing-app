@@ -20,7 +20,7 @@ import { startCase, toLower } from 'lodash'
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'flex-end',
+  justifyContent: 'space-evenly',
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
@@ -60,10 +60,10 @@ const Home: React.FC = () => {
               {startCase(toLower(currentRoute.currentPage))}
             </Typography>
             <div style={{ textAlign: 'center' }}>
-              <Typography variant="h3" noWrap component="div" sx={{ fontWeight: 'bold', color: '#f86a02', textShadow: '1px 1px #ffff' }} >
+              <Typography variant="h4" noWrap component="div" sx={{ fontWeight: 'bold', color: '#f86a02', textShadow: '1px 1px #ffff', fontSize:'1rem'}} >
                 MENLIFE
               </Typography>
-              <Typography variant="h6" noWrap component="div">
+              <Typography variant="h6" noWrap component="div" sx={{fontSize:'1rem'}}>
                 The Designer Studio
               </Typography>
             </div>
@@ -72,7 +72,7 @@ const Home: React.FC = () => {
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <Typography variant='h3' fontWeight={500} >Menlife</Typography>
+          <Typography variant='h4' fontWeight={600} sx={{textAlign:'center'}}>MENLIFE</Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
